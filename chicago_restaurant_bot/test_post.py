@@ -6,20 +6,6 @@ import yaml
 import os
 from dotenv import load_dotenv
 
-
-def create_sample_restaurant() -> Restaurant:
-    """Create a sample restaurant with example data."""
-    return Restaurant(
-        name="Chicago Deep Dish Paradise",
-        address="123 W Madison St",
-        zip_code="60601",
-        license_description="RETAIL FOOD ESTABLISHMENT",
-        business_activity="Restaurant with bar and outdoor patio",
-        square_footage="2,500",
-        application_date=datetime.now(),
-        ward="42"
-    )
-
 def preview_restaurant(restaurant: Restaurant, config: Config):
     """Display a preview for a single restaurant."""
     print("\nRestaurant Details:")
@@ -66,18 +52,17 @@ def main():
         # Initialize Chicago Data Service
         chicago_data = ChicagoDataService(config.chicago_data_token)
         
-        # Get restaurants from the last 7 days
-        last_week = datetime.now() - timedelta(days=7)
-        print(f"Fetching restaurants since {last_week.date()}")
+        # Use a specific date range from 2023
+        start_date = datetime(2023, 11, 1)  # November 1st, 2023
+        print(f"Fetching restaurants since {start_date.strftime('%Y-%m-%d')}")
         
-        restaurants = chicago_data.get_new_restaurants(last_week)
+        restaurants = chicago_data.get_new_restaurants(start_date)
         
         if not restaurants:
-            print("\nNo new restaurants found in the last 7 days.")
-            print("\nShowing sample restaurant instead:")
-            restaurants = [create_sample_restaurant()]
-        else:
-            print(f"\nFound {len(restaurants)} new restaurants!")
+            print("\nNo new restaurants found in the specified date range.")
+            return
+            
+        print(f"\nFound {len(restaurants)} new restaurants!")
             
         # Preview each restaurant
         for i, restaurant in enumerate(restaurants, 1):
