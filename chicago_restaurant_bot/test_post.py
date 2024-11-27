@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
-from models.restaurant import Restaurant
-from services.chicago_data_service import ChicagoDataService
-from config import Config
+from .models.restaurant import Restaurant
+from .services.chicago_data_service import ChicagoDataService
+from .config import Config
 import yaml
 import os
 from dotenv import load_dotenv
