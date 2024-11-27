@@ -1,0 +1,5 @@
+atproto==0.0.55
+requests==2.31.0
+python-dotenv==1.0.0
+PyYAML==6.0.1
+prometheus-client==0.17.1  # Optional: for metrics

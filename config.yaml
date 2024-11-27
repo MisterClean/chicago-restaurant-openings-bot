@@ -1,0 +1,57 @@
+# Bot Configuration
+
+# Feature Flags
+features:
+  # Enable/disable different announcement components
+  announcement:
+    include_ward: true
+    include_square_footage: true
+    include_business_activity: true
+    
+  # Post formatting options
+  formatting:
+    use_emojis: true
+    add_hashtags: true
+    
+  # Rate limiting and throttling
+  throttling:
+    enabled: true
+    min_delay_between_posts: 2  # seconds
+    
+  # Error handling
+  error_handling:
+    auto_retry: true
+    retry_delay: 300  # seconds
+    max_retries: 3
+
+# Hashtag Configuration
+hashtags:
+  default:
+    - ChicagoFood
+    - ChicagoRestaurants
+    - NewInChicago
+  additional: []  # Add custom hashtags here
+
+# Post Template Configuration
+post_template:
+  header: "🆕 New Restaurant Alert!"
+  name_prefix: "🍽️"
+  address_prefix: "📍"
+  activity_prefix: "🍳"
+  square_footage_prefix: "📐"
+  ward_prefix: "📍"
+
+# Data Filtering
+filters:
+  # Filter out specific license types
+  excluded_license_types: []
+  # Filter by specific wards (empty list means all wards)
+  included_wards: []
+  # Filter by zip codes (empty list means all zip codes)
+  included_zip_codes: []
+
+# Monitoring
+monitoring:
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  enable_metrics: false
+  metrics_port: 9090
